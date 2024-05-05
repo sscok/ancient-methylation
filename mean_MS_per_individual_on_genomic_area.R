@@ -1,4 +1,12 @@
 #!/usr/bin/env Rscript
+
+# Description: This script plots the distribution of mean MS per individual on CpG islands 
+# and genomic sites representing shelves, shores and open seas (Figure 1C).
+# 
+# inputs: 
+#	    - CGI, shores, shelves, and Open Sea methylation score dataset
+# output:
+#	    - ggplot figure 
 data <- read.table("CGIs", header = FALSE, sep = "\t")
 data <- data[, -c(1, 2, 3, 38, 39, 40)]  
 

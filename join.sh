@@ -5,7 +5,7 @@
 #SBATCH --output=epipaleomix.txt
 #SBATCH --error=epipaleomix.err
 
-Rscript --verbose --vanilla mergeMatrix.R
+Rscript --verbose --vanilla join_matrix.R
 
 
 exit
