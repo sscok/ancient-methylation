@@ -13,5 +13,5 @@ for (i in individuals){
 	colnames(df) <- c("chr", "pos", "deaminated","total","gene")
 	filtered=df[df$total>9,]	# filter the number of reads
 	result=as.data.frame(cbind(filtered, ratio=filtered$deaminated/filtered$total))
-	write.table(result, paste("ratios_10/", i, sep=""), quote=F, col.names=T, row.names=F, sep="\t")
+	write.table(result, paste("outputs/", i, sep=""), quote=F, col.names=T, row.names=F, sep="\t")
 }

@@ -7,7 +7,7 @@
 #	    - CGI, shores, shelves, and Open Sea methylation score dataset
 # output:
 #	    - ggplot figure 
-data <- read.table("CGIs", header = FALSE, sep = "\t")
+data <- read.table(args[1], header = FALSE, sep = "\t")
 data <- data[, -c(1, 2, 3, 38, 39, 40)]  
 
 colnames(data)[ncol(data)] <- "Category"
@@ -37,4 +37,4 @@ scatterplot <- ggplot(df_transposed, aes(x = factor(Category, levels = rev(categ
   
 W <- 4  
 
-ggsave("categorical_scatterplot1.pdf", plot = scatterplot, width = W, height = 2 * W, dpi = 1000, device = "pdf")
+ggsave("plots/categorical_scatterplot1.pdf", plot = scatterplot, width = W, height = 2 * W, dpi = 1000, device = "pdf")

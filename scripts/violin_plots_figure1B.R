@@ -2,7 +2,7 @@
 # Description: Below script generates the violin plots of the methylation score (MS) data related 
 # to ancient individuals included in this study (Figure 1B).
 # inputs: 
-#	- input: matrix_sorted_2023 which is a matrix created using join_matrix.R
+#	- input: the matrix created using join_matrix.R
 # - inds: individual names ordered
 # - hg: Hunter-Gatherer individuals
 # - ne: Farmer individuals
@@ -14,13 +14,8 @@ library(scales)
 library(gridExtra)
 args = commandArgs(trailingOnly=TRUE)
 
-# args[1]: set working directory
-# args[2]: sorted MS dataset input name
-
-setwd(args[1])
-
 # read MS dataset
-input=read.table("matrix_sorted_2023",head=T, sep="\t")
+input=read.table("matrix_sorted_2024",head=T, sep="\t")
 inds=c("chr", "start","end", "AKT16","Asp6","BAR25","cta016","Dil16","Ess7","Herx","irk025","irk061","K14","Klein7","kra001","LBK","LEPE48","LEPE52","Loschbour",
   "Motala12","Nea2","Nea3","prs002","prs009","prs013","prs016","R15","R2","R3","R7","R9","Sf12","STAR1","Ust-Ishim","VC3-2","VLASA32","VLASA7")
 
@@ -58,6 +53,6 @@ p2=ggplot(processed, aes(x=individual, y=MethylationScore)) +
                                                                                                           labels =trans_format("log2",math_format(.x))) +
   stat_summary(fun="median", geom="point", color="black", size=1.5) + stat_summary(fun="mean", geom="point",color="#440154FF", size=1.5) + theme_bw() + labs(y="Methylation Score",size=25) +
     theme(axis.text=element_text(size=15),legend.position="none", panel.background = element_blank(),axis.title.x=element_blank(), axis.text.y = element_text(vjust = 0.5, hjust=1, color = c(rep("blue",13), rep("red", 21)))) + coord_flip(ylim=c(2^0, 2^0.07))
-pdf("vioplots_marchi.pdf",width="12",height="20")
+pdf("plots/vioplots_marchi.pdf",width="12",height="20")
 grid.arrange(p1,p2,ncol=2)
 dev.off()

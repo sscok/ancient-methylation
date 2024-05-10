@@ -14,7 +14,8 @@ library(ggplot2)
 #	    - a merged scatterplot for all the candidate genes with all the categories described.
 
 #------------------- subsistence type, laboratory-of-origin as random factor ------------------------------ 
-data=read.table("TOX2.lab", head=F)
+args = commandArgs(trailingOnly=TRUE)
+data=read.table(paste0(args[1],"TOX2.lab"), head=F)
 result <- aggregate(V3 ~ V2 + V4 + V5, data, FUN=mean, na.rm=TRUE)
 resultvalue <- aggregate(V3 ~ V4, result, FUN=mean, na.rm=TRUE)
 hg=c("UstIshim","Loschbour","Sf12","R7", "irk025","irk061","kra001","VLASA32","VLASA7")
@@ -41,7 +42,7 @@ scatterplot1 <- ggplot(df_all, aes(x = Category, y = log2(Value+1), color = Cate
   guides(color = FALSE)
 
 #------------------- subsistence type, individual as random factor ------------------------------ 
-data=read.table("ICAM5.indf", head=F)
+data=read.table(paste0(args[1],"ICAM5.indf"), head=F)
 result <- aggregate(V3 ~ V2 + V4 + V5, data, FUN=mean, na.rm=TRUE)
 resultvalue <- aggregate(V3 ~ V4, result, FUN=mean, na.rm=TRUE)
 hg=c("UstIshim","Loschbour","Sf12","R7","R15", "cta016", "irk025","irk061","kra001","VLASA32","VLASA7")
@@ -68,7 +69,7 @@ scatterplot2 <- ggplot(df_all, aes(x = Category, y = log2(Value+1), color = Cate
   guides(color = FALSE) 
 
 #------------------- tissue type, laboratory-of-origin as random factor ------------------------------ 
-data=read.table("PCDHA2.lab", head=F)
+data=read.table(paste0(args[1],"PCDHA2.lab"), head=F)
 result <- aggregate(V3 ~ V2 + V4 + V5, data, FUN=mean, na.rm=TRUE)
 resultvalue <- aggregate(V3 ~ V4, result, FUN=mean, na.rm=TRUE)
 tooth=c("Loschbour" , "irk025","irk061","kra001","cta016","prs002","prs016","prs013","prs009","LBK")
@@ -95,7 +96,7 @@ scatterplot3 <- ggplot(df_all, aes(x = Category, y = log2(Value+1), color = Cate
   guides(color = FALSE)
 
 #------------------- tissue type, individual as random factor  ------------------------------ 
-data=read.table("ATP1B3.indf", head=F)
+data=read.table(paste0(args[1],"ATP1B3.indf"), head=F)
 result <- aggregate(V3 ~ V2 + V4 + V5, data, FUN=mean, na.rm=TRUE)
 resultvalue <- aggregate(V3 ~ V4, result, FUN=mean, na.rm=TRUE)
 tooth=c("Loschbour" , "irk025","irk061","kra001","cta016","prs002","prs016","prs013","prs009","LBK")
@@ -122,7 +123,7 @@ scatterplot4 <- ggplot(df_all, aes(x = Category, y = log2(Value+1), color = Cate
   guides(color = FALSE)
 
 #------------------- genetic sex, laboratory-of-origin as random factor ------------------------------ 
-data=read.table("RCOR1.lab", head=F)
+data=read.table(paste0(args[1],"RCOR1.lab"), head=F)
 result <- aggregate(V3 ~ V2 + V4 + V5, data, FUN=mean, na.rm=TRUE)
 resultvalue <- aggregate(V3 ~ V4, result, FUN=mean, na.rm=TRUE)
 xy=c("VC3-2","Asp6","LEPE48","LEPE52","BAR25","Dil16","Ess7","UstIshim","Motala12","Loschbour" , "K14", "R9","R15","R7","irk025","irk061","kra001","prs009","VLASA32","VLASA7")
@@ -148,7 +149,7 @@ scatterplot5 <- ggplot(df_all, aes(x = Category, y = log2(Value+1), color = Cate
   stat_summary(fun = median, geom = "crossbar", size = 0.5, width = 0.5, color = "black") +  
   guides(color = FALSE)
 #------------------- genetic sex, individual as random factor ------------------------------ 
-data=read.table("CEP135.indf", head=F)
+data=read.table(paste0(args[1],"CEP135.indf"), head=F)
 result <- aggregate(V3 ~ V1 + V2 + V4 + V6, data, FUN=mean, na.rm=TRUE)
 resultvalue <- aggregate(V3 ~ V4, result, FUN=mean, na.rm=TRUE)
 xy=c("VC3-2","Asp6","LEPE48","LEPE52","BAR25","Dil16","Ess7","UstIshim","Loschbour", "R9","R15","irk061","kra001","prs009","prs013","VLASA32","VLASA7")
@@ -176,6 +177,6 @@ scatterplot6 <- ggplot(df_all, aes(x = Category, y = log2(Value+1), color = Cate
 
 
 # merge all the scatter plots and create the Figure 2 in the article.
-pdf("combined_scatterplots.pdf", width = 12, height = 6)
+pdf("plots/combined_scatterplots.pdf", width = 12, height = 6)
 grid.arrange(scatterplot1, scatterplot3, scatterplot5, scatterplot2, scatterplot4, scatterplot6, ncol = 3)
 dev.off()

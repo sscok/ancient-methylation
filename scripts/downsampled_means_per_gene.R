@@ -18,5 +18,5 @@ for (i in 1:20){
 }
 result_df <- result_df / 20	
 all = cbind(Gene=genes, result_df)
-write.table(all, file="reshaped_ds_all_means_v2",quote=F, col.names=T, row.names=F, sep="\t")
+write.table(all, file="reshaped_ds_all_means",quote=F, col.names=T, row.names=F, sep="\t")
 	

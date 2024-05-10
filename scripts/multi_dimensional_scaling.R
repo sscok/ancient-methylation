@@ -5,13 +5,13 @@
 #      - info table file name: from the table at https://docs.google.com/spreadsheets/d/1s3L1OhIWnl5258WMSdMJDPveJ9igka72GIYqVZ5_lqg/edit#gid=0
 # output:
 #	- MDS plot
-
+args = commandArgs(trailingOnly=TRUE)
 unique_lab_colors <- c("limegreen", "royalblue", "black", "violetred", "orange")
 data = read.table("reshaped_ds_all_means_v2", row.names = 1, head = T)
-info = read.table("Shotgun_inds.tsv", row.names = 1, head = T, fill=T, sep="\t")
+info = read.table(args[1], row.names = 1, head = T, fill=T, sep="\t")  #"Shotgun_inds.tsv"
 mds <- cmdscale(dist(t(data)))
 
-pdf("MDS_Plots.pdf", width = 14, height = 7)
+pdf("plots/MDS_Plots.pdf", width = 14, height = 7)
 
 par(mfrow = c(1, 2))
 plot(mds, type = "n", xlab = "Dimension 1", ylab = "Dimension 2")

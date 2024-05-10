@@ -6,8 +6,8 @@
 #	- names: replicated dataset file names for all individuals 
 # output:
 #	- an output file per individual with a prefix "downsampled_" (e.g. downsampled_Asp6_replicated_1)
-
-setwd("/mnt/NAS/projects/2019_epipaleomix/epipaleo/out_shotgun/epipaleo_out/anova_marchi/ratios_10")
+args = commandArgs(trailingOnly=TRUE)
+setwd(args[1])
 names= c("AKT16_replicated","Asp6_replicated","BAR25_replicated","Dil16_replicated","Ess7_replicated","Herx_replicated","Klein7_replicated","LBK_replicated","LEPE48_replicated","LEPE52_replicated","Loschbour_replicated","Nea2_replicated","Nea3_replicated","prs013_replicated","Sf12_replicated","STAR1_replicated","UstIshim_replicated","VC3-2_replicated","VLASA32_replicated","VLASA7_replicated")
 
 for (k in c(1:20)){
@@ -37,6 +37,6 @@ for (k in c(1:20)){
 		p1=sum(det2==1)/(sum(det2==1)+sum(det2==0))
 		print(p1)
 		print(dim(pos))
-		write.table(pos,paste(paste("downsampled",i,sep="_"), k, sep="_"), quote=F, col.names=F, row.names=F, sep="\t")
+		write.table(pos,paste(paste(i,"ds_",sep="_"), k, sep="_"), quote=F, col.names=F, row.names=F, sep="\t")
 	}
 }

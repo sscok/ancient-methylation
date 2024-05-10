@@ -1,11 +1,11 @@
-# methylation dataset downsampled (normalized) 20x, and mean methylation score (MS) per gene calculated, and means of 20x replicates calculated (NAs not removed). by seda cokoglu, Aug 2022
+# methylation dataset downsampled (normalized) 20x, and mean methylation score (MS) per gene calculated, and means of 20x replicates calculated (NAs not removed)
 
 a = read.table("reshaped_ds_all_means_v2", row.names = 1, head = T)  # input dataset which has been created by getting the means of the 20 downsampled datasets
 colnames(a)
 head(a)
 dim(a)
 
-# info table. from seda's table at https://docs.google.com/spreadsheets/d/1s3L1OhIWnl5258WMSdMJDPveJ9igka72GIYqVZ5_lqg/edit#gid=0, but some sample and article names modified to match that in the methylation table
+# info table
 
 b = read.table("Shotgun_inds.tsv", row.names = 1, head = T, fill=T, sep="\t")
 head(b)
@@ -97,7 +97,7 @@ sum(rowSums(!is.na(ax)) >= 12) # 4717
 
 ax2 = ax[rowSums(!is.na(ax)) >= 20,]
 
-dim(ax2) # 4717   33
+dim(ax2)
 ax2_aovp <- apply(ax2, 1, function(y) {
   tryCatch(summary(aov(as.numeric(y) ~ factor(bx$lifestyle)))[[1]]$Pr[1], error = function(e) "NaN") } )
 hist(ax2_aovp, br=100)
@@ -204,7 +204,7 @@ d <- read.table("/mnt/NAS/projects/2019_epipaleomix/epipaleo/Methylation_AGR_RHG
 # NF-HG, from Fagny et al, shared w Dilek 
 colnames(d)
 head(d)
-dim(d) # 365401      9
+dim(d)
 
 # multiple genes per loci: take the first gene
 x = sapply(d$UCSC_REFGENE_NAME, function(x) strsplit(x, ";")[[1]][1])
@@ -228,7 +228,7 @@ d <- read.table("/mnt/NAS/projects/2019_epipaleomix/epipaleo/Methylation_AGR_RHG
 
 colnames(d)
 head(d)
-dim(d) # 365401      9
+dim(d)
 
 # multiple genes per loci: take the first gene
 
@@ -254,8 +254,6 @@ cor.test(xxxx[,1], xxxx[,2], m="s")
 
 # compare lazaridis, antonioni, marchi, and the rest
 
-# res: yes
-
 table(bx$Article, bx$lifestyle)
 
 
@@ -272,15 +270,11 @@ apply(!is.na(ax_diffs), 2, sum)
 ax_diffs[ax_diffs == 0] = NA
 ax_diffs <- ax_diffs[!is.na(rowSums(ax_diffs)),]
 dim(ax_diffs)
-# 1355    4
 
 ax_diffs_combs <- table ( apply( sign(ax_diffs), 1, function(x) paste(x, collapse = " ") ) )
 rev( sort( ax_diffs_combs ) )
 
-# more neg than positive
 table(sign(ax_diffs))
-# -1    1 
-# 2954 2466 
 
 # freq of -1
 ax_diffs_minus_freq <- table(sign(ax_diffs))["-1"]/length(ax_diffs)
@@ -347,7 +341,6 @@ genenamesx = as.character( sapply(d1$UCSC_REFGENE_NAME, function(x) strsplit(x, 
 west_diff = tapply(as.numeric(d1$logFC), genenamesx, function(y) mean(y) )
 head(west_diff)
 length(west_diff)
-# 19124
 summary(west_diff)
 
 ### eastern HG-AGR
@@ -358,7 +351,7 @@ d2 <- read.table("/mnt/NAS/projects/2019_epipaleomix/epipaleo/Methylation_AGR_RH
 d2$logFC <- d2$logFC*-1
 colnames(d2)
 head(d2)
-dim(d2) # 365401      9
+dim(d2)
 
 # multiple genes per loci: take the first gene
 genenamesx = as.character( sapply(as.character(d2$UCSC_REFGENE_NAME), function(x) strsplit(x, ";")[[1]][1]) )
@@ -429,12 +422,10 @@ legend(3, 250, legend = c("Observed", "Expected"), fill = c(1,"lightgrey"), bty=
 # all -1 genes: NF>HG
 ax_diffs2_neg_genes <- names(which(rowSums( ax_diffs2s == -1) == 3))
 length(ax_diffs2_neg_genes)
-# 248
 
 # all +1 genes: HG>NF
 ax_diffs2_pos_genes <- names(which(rowSums( ax_diffs2s == 1) == 3))
 length(ax_diffs2_pos_genes)
-# 85
 
 ###
 
@@ -443,9 +434,6 @@ require(org.Hs.eg.db)
 
 args = commandArgs(trailingOnly=TRUE)
 # args[1]: set working directory
-# args[2]: corrected anova table input file
-# args[3]: gene set option either "g" or "gts", g for Subsistence type significant, gts for Subsistence type significant, others non-significant 
-# args[4]: output file name
 setwd(args[1])
 genes=rowSums( ax_diffs2s == -1)
 

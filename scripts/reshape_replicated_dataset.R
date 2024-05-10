@@ -9,7 +9,7 @@ library(dplyr)
 library(reshape2)
 
 for (i in 1:20){
-	data=read.table(paste0("all_replicated_ds_sorted_a_",i), head=F)
+	data=read.table(paste0("all_replicated_ds_",i), head=F)
 	result <- aggregate(V3 ~ V1 + V2 + V4 + V6, data, FUN=mean, na.rm=TRUE)
 	reshaped_data <- dcast(result, V1 + V2 + V6 ~ V4, value.var = "V3")
 	agg_data <- reshaped_data %>%
