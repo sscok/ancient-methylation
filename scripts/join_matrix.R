@@ -17,7 +17,8 @@ df_union = reference_data
 
 for (file in input_files) {
 
-  input_data <- read.table(file, header = TRUE)
+  input_data <- read.table(paste0("../", file), header = TRUE)
+  colnames(input_data) <- c("X.chrom", "genomicpos","deaminated", "total", "bedcoord", "ratio")
   merged_data <- merge(df_union, input_data, by = c("X.chrom", "genomicpos"), all.x = TRUE)
   ratio_col_name <- paste(file, "ratio", sep = "_")
   df_union[ratio_col_name] <- merged_data$ratio
