@@ -11,7 +11,7 @@ with open(sys.argv[1], "r") as input:
         for line in input:
             the_list = line.split()
             count=int(the_list[2])
-            if int(the_list[3])>= 10:
+            if int(the_list[3])>= 4:
                 for i in range(int(the_list[3])):
                     output.write(the_list[0] + "\t" + the_list[1] + "\t")
                     if count == 0:
@@ -19,5 +19,5 @@ with open(sys.argv[1], "r") as input:
                     else:
                         output.write("1")
                         count-=1
-                    output.write("\t" + sys.argv[3] + "\t" + sys.argv[4] + "\t" + the_list[4] + "\t" + the_list[5] + "\t" + sys.argv[5] + "\t" + sys.argv[6]  + "\n")
+                    output.write("\t" + sys.argv[3] + "\t" + sys.argv[4] + "\t" + the_list[4] + "\t" + sys.argv[5] + "\t" + sys.argv[6]  + "\n")
 

@@ -9,9 +9,9 @@ individuals=c("UstIshim","Motala12","Loschbour","K14","R15","R2","R7","Sf12","R1
 "Nea3","STAR1","VC3-2")
 
 for (i in individuals){
-	df=read.delim(paste0("data/",i),head=F, sep="\t")
+	df=read.table(paste0("data/",i),head=F)
 	colnames(df) <- c("chr", "pos", "deaminated","total","bedcoord")
-	filtered=df[df$total>4,]	# filter the number of reads
+	filtered=df[df$total>3,]	# filter the number of reads
 	result=as.data.frame(cbind(filtered, ratio=filtered$deaminated/filtered$total))
-	write.table(result, paste("outputs/", i, sep=""), quote=F, col.names=T, row.names=F, sep="\t")
+	write.table(result, paste("outputs/", i, sep=""), quote=F, col.names=F, row.names=F, sep="\t")
 }

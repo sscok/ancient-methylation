@@ -7,7 +7,7 @@
 #	- MDS plot
 args = commandArgs(trailingOnly=TRUE)
 unique_lab_colors <- c("limegreen", "royalblue", "black", "violetred", "orange")
-data = read.table("reshaped_ds_all_means_v2", row.names = 1, head = T)
+data = read.table("reshaped_ds_all_means", row.names = 1, head = T)
 info = read.table(args[1], row.names = 1, head = T, fill=T, sep="\t")  #"Shotgun_inds.tsv"
 mds <- cmdscale(dist(t(data)))
 

@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-intersectBed=/usr/local/sw/bedtools2-2.25.0/bin/intersectBed							# /path/to/bedtools/intersect
+intersectBed=/usr/local/sw/bedtools2/bin/intersectBed							# /path/to/bedtools/intersect
 epipaleo=$1	# /path/to/epiPALEOMIX/outputs/
 output=$2	# /output/directory/name/
 refanno=$3	# /path/to/reference/annotation/file		
@@ -8,12 +8,11 @@ refcpg=$4	# /path/to/reference/cpg/positions
 methcgi=$5	# /path/to/reference/cgi/shelf/shores
 scripts=$6	# /path/to/scripts/
 
-mkdir outputs
+mkdir ${epipaleo}
 # process the input files
 Rscript --vanilla ${scripts}process_and_filter_epiPALEOMIX.R
-
 # replicate the original files
-bash ${scripts}replicated_dataset_generation.sh ${epipaleo} ${output} ${refanno}
+bash ${scripts}replicated_dataset_generation.sh ${epipaleo} ${output} ${refanno} ${scripts}
 
 # Monte-Carlo Method
 Rscript --vanilla ${scripts}downsampled_dataset_generation.R ${epipaleo}/${output}
@@ -46,8 +45,8 @@ Rscript --vanilla ${scripts}violin_plots_figure1B.R
 
 Rscript --vanilla ${scripts}mean_MS_per_individual_on_genomic_areas.R ${methcgi}
 
-Rscript --vanilla ${scripts}multi_dimensional_scaling.R data/Shotgun_inds.tsv
+Rscript --vanilla ${scripts}multi_dimensional_scaling.R ../../data/Shotgun_inds.tsv
 
-Rscript --vanilla ${scripts}scatterplots_of_candidate_genes.R data/genes/
+Rscript --vanilla ${scripts}scatterplots_of_candidate_genes.R ../../data/genes/
 
 exit

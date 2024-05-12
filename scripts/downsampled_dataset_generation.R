@@ -35,8 +35,6 @@ for (k in c(1:20)){
 		pos=k14[index,]
 		sum(sampled==1)
 		p1=sum(det2==1)/(sum(det2==1)+sum(det2==0))
-		print(p1)
-		print(dim(pos))
-		write.table(pos,paste(paste(i,"ds_",sep="_"), k, sep="_"), quote=F, col.names=F, row.names=F, sep="\t")
+		write.table(na.omit(pos),paste(paste(i,"ds",sep="_"), k, sep="_"), quote=F, col.names=F, row.names=F, sep="\t")
 	}
 }

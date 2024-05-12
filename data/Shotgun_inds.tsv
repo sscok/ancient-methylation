@@ -1,0 +1,21 @@
+Individual	Article	cov	lib	country	country	lifestyle	tissue	genetic_sex	Total CpG position	Total >=5 read CpG position	Total filtered 4	Total filtered CpG position	path
+UstIshim_mean	Fu2014	26.3448	single	Russia_HG	Russia	HG	bone	XY	12,164,144	10,546,989	11,042,897	685,226	/mnt/NEOGENE3/share/dna/hsa/comparative_seqs/fu2014/Ust_Ishim.hg19_1000g.all.bam.hs37d5.fa.cons.90perc.bam
+Loschbour_mean	Lazaridis2014	15.5256	double	Luxemburg_HG	Luxemburg	HG	tooth	XY	11,902,498	6,407,030	8,085,633	428,911	/mnt/NEOGENE3/share/dna/hsa/comparative_seqs/lazaridis2014/Loschbour.hg19_1000g.dq.bam.hs37d5.fa.cons.90perc.bam
+Sf12_mean	Gunther2018	57.8	double	Scandinavia_HG	Scandinavia	HG	bone	XX	12,427,015	11,395,394	11,721,230	686,487	/mnt/NEOGENE3/share/dna/hsa/comparative_seqs/gunther2018/sf12_90perc_libr_160201.merge.hs37d5.fa.bam
+VLASA32_mean	Marchi2022	10.6176	double	Vlasac_HG		HG	bone	XY					
+VLASA7_mean	Marchi2022	12.787	double	Vlasac_HG		HG	bone	XY					
+prs013_mean	Quinto2019	1.33446	single	Ireland_NE	Ireland	NF	tooth	XY	10,074,830	1,425,413	2,660,016	415,584	/mnt/NEOGENE3/share/dna/hsa/comparative_seqs/sanchez-quinto2019/prs013UDG.hs37d5.fa.cons.90perc.bam.hs37d5.cons.90perc.bam
+LBK_mean	Lazaridis2014	14.267	double	Germany_NE	Germany	NF	tooth	XX	11,110,797	2,179,760	3,950,714	499,06	
+AKT16_mean	Marchi2022	8.97136	double	Türkiye_NE		NF	bone	XX					
+Asp6_mean	Marchi2022	11.0114	double	Austria_NE		NF	bone	XY					
+BAR25_mean	Marchi2022	9.26313	double	Türkiye_NE		NF	bone	XY					
+Dil16_mean	Marchi2022	9.42222	double	Germany_NE		NF	bone	XY					
+Ess7_mean	Marchi2022	10.94	double	Germany_NE		NF	bone	XY					
+Herx_mean	Marchi2022	10.3333	double	Germany_NE		NF	bone	XX					
+Klein7_mean	Marchi2022	10.2084	double	Austria_NE		NF	bone	XX					
+LEPE48_mean	Marchi2022	10.0203	double	Serbia_NE		NF	bone	XY					
+LEPE52_mean	Marchi2022	10.5814	double	Serbia_NE		NF	bone	XY					
+Nea2_mean	Marchi2022	11.3268	double	Greece_NE		NF	bone	XX					
+Nea3_mean	Marchi2022	10.2087	double	Greece_NE		NF	bone	XX					
+STAR1_mean	Marchi2022	9.36515	double	Serbia_NE		NF	bone	XX					
+VC3.2_mean	Marchi2022	9.70256	double	Serbia_NE		NF	bone	XY					
