@@ -47,10 +47,6 @@ Rscript --vanilla reshape_replicated_dataset.R
 Rscript --vanilla downsampled_means_per_gene.R
 ```
 
-Previous batch files call reshape_replicated_dataset.R and downsampled_means_per_gene.R script files, respectively.
-
-  
-
 ### Analysis of Variance on Replicated Dataset
 
   
@@ -115,6 +111,4 @@ All the other analyses mentioned in the article are carried out via using the sc
 
 For further information, please refer to the article.
 
-The R scripts and batch files are assumed to run using a slurm workload manager. If this is not the case for your system, you can replace "Rscript --verbose --vanilla" with "R CMD BATCH" and after rearranging these, you can use "bash script-name-here.sh" in Linux.
-
-A preview of all the datasets mentioned in the codes are provided under the "data" directory.
+A preview of all the datasets mentioned in the codes are provided under the "example_previews/" directory.
