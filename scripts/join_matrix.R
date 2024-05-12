@@ -4,7 +4,7 @@
 #	- input_files: individual file names containing MS ratio per individual
 # - reference_data: CpG positions in the form of "chr  start  end"
 # output:
-#	- file output "matrix_sorted_2023", merged matrix
+#	- file output "matrix_sorted_2024", merged matrix
 args = commandArgs(trailingOnly=TRUE)
 
 input_files <- c("AKT16","Asp6","BAR25","cta016","Dil16","Ess7","Herx","irk025","irk061","K14","Klein7","kra001","LBK","LEPE48","LEPE52","Loschbour",
