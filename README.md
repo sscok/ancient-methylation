@@ -10,7 +10,8 @@ bash pipeline.sh output_folder_name processed_outputs_folder_name /path/to/sorte
 ```
 
 ## Descriptions Related to all Steps
-### Replicated Datasets Generation
+
+### Generation of replicated datasets
 
 First, one should generate the annotated methylation score (MS) datasets (i.e. including gene names) using the script below.
 
