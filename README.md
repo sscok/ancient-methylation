@@ -1,7 +1,7 @@
 
 # Investigating food production-associated DNA methylation changes in paleogenomes: lack of consistent signals beyond technical noise
 
-## Pipeline Usage
+## Pipeline usage
 
 The file that operates all the steps is called pipeline.sh. One can use it as follows:
 
@@ -66,13 +66,14 @@ This script is called for all 20 downsampled (normalized) datasets separately.
 
 ### Matrix generation
 
-The second type of MS dataset (in addition to the replicated MS dataset) is an annotated matrix with CpG positions and individuals. This is used for different analyses. 
+The second type of MS dataset (in addition to the replicated MS dataset) is an annotated matrix with MS values per CpG positions in the rows and individuals in the columns.
 
-The CpG site reference dataset (it must be sorted by position) is merged with the processed epiPALEOMIX output of every individual and is annotated. Missing MS values are represented by NA. The matrix is generated using the script:
+The CpG site reference dataset (must be sorted by position) is merged with the processed epiPALEOMIX output of every individual and is annotated. Missing MS values are represented by NA. The matrix is generated using the script:
 
 ```
 Rscript --vanilla join_matrix.R /path/to/sorted/reference/cpgsite.bed
 ```
+
 
 ### Plotting figures  
 
@@ -96,7 +97,7 @@ In Figure 2 of our article (Çokoğlu et al.), we see the plots of candidate gen
 Rscript --vanilla scatterplots_of_candidate_genes.R /path/to/genes
 ```
 
-The scripts inside this R file require the input files with the information related to the selected genes. They are basically the grepped positions from the generated replicated datasets.
+The scripts inside this R file require the input files with the information related to the selected genes. These are the grepped positions from the generated replicated datasets.
 
 Multi-dimensional Scaling (MDS) analysis for Figure 3 was carried out using the following script. It requires the means of all 20 downsampled datasets with respect to observed genes and information file related to the individuals. The info file is located here: data/Shotgun_inds.tsv. One can run the script using the command below. 
 
@@ -108,7 +109,7 @@ The X-chromosome analyses in Figure 4 uses normalized MSs.
 
 ### Other analyses
 
-All the other analyses mentioned in the article are carried out via using the scripts inside the general_analysis.R file.
+All the other analyses described in the article were carried out via using the scripts inside the general_analysis.R file.
 
 For further information, please refer to the article.
 
