@@ -2,32 +2,35 @@
 # Investigating food production-associated DNA methylation changes in paleogenomes: lack of consistent signals beyond technical noise
 
 ## Pipeline Usage
-A file that operates all the steps is called pipeline.sh
-One can use it as follows:
+
+The file that operates all the steps is called pipeline.sh. One can use it as follows:
 
 ```
 bash pipeline.sh output_folder_name processed_outputs_folder_name /path/to/sorted/annotation/file.bed /path/to/sorted/reference/cpgsite.bed /path/to/CGIs/dataset /path/to/scripts/
 ```
 
-## Descriptions Related to all Steps
+## Descriptions related to all steps
 
-### Generation of replicated datasets
+### Generating replicated (recoded) datasets
 
-First, one should generate the annotated methylation score (MS) datasets (i.e. including gene names) using the script below.
+First, one should generate the annotated methylation score (MS) datasets (i.e. including gene names) using the script below using the epiPALEOMIX software (https://github.com/KHanghoj/epiPALEOMIX). 
 
 ```
 Rscript --verbose --vanilla process_and_filter_epiPALEOMIX.R
 ```
 
-After that the output of these files are used in the script:
+The output of these files is used in the script:
 
 ```
 bash replicated_dataset_generation.sh output_folder_name processed_outputs_folder_name /path/to/sorted/annotation/file.bed /path/to/scripts/
 ```
 
-This uses replicate.py script to generate the desired output for replicated dataset generation.
+This uses the replicate.py script to recode the data so that each row describes the state of one observation (deaminated or not) per CpG position per library. 
 
-### Downsampled Datasets Generation
+In addition to deamination, the columns include information about the library (tissue, sex, subsistence, lab, and gene). See the example file (replicated-dataset-preview).
+
+
+### Generating downsampled (normalized) datasets
 
 20 Downsampled datasets are generated using downsampled_dataset_generation.R
 
