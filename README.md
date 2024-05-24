@@ -66,7 +66,7 @@ This script is called for all 20 downsampled (normalized) datasets separately.
 
 ### Matrix generation
 
-The second type of MS dataset (in addition to the replicated MS dataset) is an annotated matrix with MS values per CpG positions in the rows and individuals in the columns.
+The second type of MS dataset (in addition to the replicated MS dataset) is a matrix with MS values per CpG positions in the rows and individuals in the columns.
 
 The CpG site reference dataset (must be sorted by position) is merged with the processed epiPALEOMIX output of every individual and is annotated. Missing MS values are represented by NA. The matrix is generated using the script:
 
