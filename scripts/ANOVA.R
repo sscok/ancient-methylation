@@ -3,7 +3,7 @@
 # the analysis of variance summary output in our script below. 
 # However, in our system it needed to be defined.
 # inputs: 
-#	- expression
+#	- expr: the matrix with the methylation score values
 #     - output file name: string
 #     - append: boolean
 #     - collapse: string
