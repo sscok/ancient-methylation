@@ -67,7 +67,7 @@ input=read.table(args[1], head=F)		# path to replicated file for all individuals
 genes=c()
 for (c_gene in unique(input$V6)){ 	# per gene
  gene = input[input$V6 == c_gene,] 	# get part related to the gene in concern
- temp=tryCatch(summary(aov(gene$V3 ~ gene$V5 + gene$V7 + gene$V8 + Error(gene$V4))), error = function(e) "NaN")	# calculate ANOVA
+ temp=tryCatch(summary(aov(gene$V3 ~ gene$V5 + gene$V7 + gene$V8 + Error(gene$V4))), error = function(e) "NaN")	# perform ANOVA
  captureOutput(temp, file = args[2], append=TRUE)     # capture the result to a file
  genes=append(genes,c_gene)
 }
