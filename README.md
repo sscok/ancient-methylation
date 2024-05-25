@@ -29,7 +29,7 @@ This uses the replicate.py script to recode the data so that each row describes 
 
 In addition to deamination, the columns include information about the library (tissue, sex, subsistence, lab, and gene). 
 
-See the example file (replicated-dataset-preview).
+This dataset is referred to as "Full data for linear mixed models" in the article. See the example file (replicated-dataset-preview).
 
 
 ### Generating downsampled (normalized) datasets and merging
@@ -52,7 +52,7 @@ One can then generate a file with the mean MS per individual per gene using the 
 Rscript --vanilla reshape_replicated_dataset.R
 Rscript --vanilla downsampled_means_per_gene.R
 ```
-
+This resulting dataset is referred in the article as "Gene-averaged data".
 ### Analysis of Variance (ANOVA) on the replicated (recoded) dataset
 
 One can use the ANOVA.R file to carry out ANOVA on the downsampled (normalized) datasets using the command below:
